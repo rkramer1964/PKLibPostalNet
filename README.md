@@ -43,7 +43,7 @@ There were issues reported with SSE, so I disabled it.
 See the [LibPostal](https://github.com/openvenues/libpostal) project to set up the environment.
 Then for the library build:
 
-`
+```
 git clone https://github.com/openvenues/libpostal
 cd libpostal
 cp -rf windows/* ./
@@ -51,7 +51,7 @@ cp -rf windows/* ./
 ./configure --datadir=`pwd`/libpostal_data --disable-sse2
 make -j4
 make install
-`
+```
 
 ** This has my personal build folder on my workstation in the datadir - you WILL need to set the data dir at runtime **
 There were issues reported with SSE, so I disabled it.
