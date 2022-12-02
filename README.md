@@ -46,7 +46,6 @@ Then for the library build:
 ```
 git clone https://github.com/openvenues/libpostal
 cd libpostal
-cp -rf windows/* ./
 ./bootstrap.sh
 ./configure --datadir=`pwd`/libpostal_data --disable-sse2
 make -j4
