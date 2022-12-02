@@ -10,8 +10,8 @@ https://github.com/openvenues/libpostal/releases/download/v1.0.0/parser.tar.gz a
 
 Windows users should be able to use 7-zip for this.
 
-** Users of this package WILL need to reset the libpostal data directory at runtime.  See the [LibPostalNet](https://github.com/mapo80/LibPostalNet) console demonstration
-program for how to do this. (snippet below) **
+**Users of this package WILL need to reset the libpostal data directory at runtime.  See the [LibPostalNet](https://github.com/mapo80/LibPostalNet) console demonstration
+program for how to do this. (snippet below)**
 
 ```
                 libpostal.LibpostalSetupDatadir(dataPath);
@@ -53,5 +53,5 @@ make -j4
 make install
 ```
 
-** This has my personal build folder on my workstation in the datadir - you WILL need to set the data dir at runtime **
+**This has my personal build folder on my workstation in the datadir - you WILL need to set the data dir at runtime**
 There were issues reported with SSE, so I disabled it.
