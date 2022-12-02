@@ -1,13 +1,13 @@
 ﻿<Project>
 	<ItemGroup>
-		<DataFiles Include="$(MSBuildThisFileDirectory)\..\contentFiles\App_Data\libpostal\**\*.*" />
 		<WindowsNativeFiles Include="$(MSBuildThisFileDirectory)\..\contentFiles\windows\libpostal-1.dll" />
 		<LinuxNativeFiles Include="$(MSBuildThisFileDirectory)\..\contentFiles\linux_x86_64\libpostal-1.so" />
 	</ItemGroup>
-	<Target Name="CopyDataFiles" BeforeTargets="Build">
-		<Copy SourceFiles="@(DataFiles)" DestinationFolder="$(TargetDir)App_Data\libpostal\%(RecursiveDir)" />
-	</Target>
-	<Target Name="CopyNative" BeforeTargets="Build">
+	<Target Name="PrepLibPostal" BeforeTargets="Build">
+		<DownloadFile SourceUrl="https://github.com/rkramer1964/PKLibPostalNetData/releases/download/1.0.0/libpostal.zip"
+					  DestinationFolder="$(TargetDir)\App_Data"></DownloadFile>
+		<Unzip SourceFiles="$(TargetDir)\App_Data\libpostal.zip" DestinationFolder="$(TargetDir)\App_Data" OverwriteReadOnlyFiles="true"></Unzip>
+		<Delete Files="$(TargetDir)\App_Data\libpostal.zip"></Delete>
 		<Copy SourceFiles="@(WindowsNativeFiles)" DestinationFolder="$(TargetDir)" Condition="'$(OS)' == 'Windows_NT'"/>
 		<Copy SourceFiles="@(LinuxNativeFiles)" DestinationFolder="$(TargetDir)" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))'"/>
 	</Target>
