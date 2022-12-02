@@ -13,12 +13,12 @@ Windows users should be able to use 7-zip for this.
 ** Users of this package WILL need to reset the libpostal data directory at runtime.  See the [LibPostalNet](https://github.com/mapo80/LibPostalNet) console demonstration
 program for how to do this. (snippet below) **
 
-`
+```
                 libpostal.LibpostalSetupDatadir(dataPath);
                 libpostal.LibpostalSetupParserDatadir(dataPath);
                 libpostal.LibpostalSetupLanguageClassifierDatadir(dataPath);
 
-`
+```
 
 # How it was built
 
@@ -26,7 +26,7 @@ program for how to do this. (snippet below) **
 See the [LibPostal](https://github.com/openvenues/libpostal) project to set up the environment.
 Then for the library build:
 
-`
+```
 git clone https://github.com/openvenues/libpostal
 cd libpostal
 cp -rf windows/* ./
@@ -34,7 +34,7 @@ cp -rf windows/* ./
 ./configure --datadir=/c --disable-sse2
 make -j4
 make install
-`
+```
 
 There were issues reported with SSE, so I disabled it.
 
