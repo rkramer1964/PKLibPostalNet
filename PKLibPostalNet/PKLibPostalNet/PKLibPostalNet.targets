@@ -16,4 +16,13 @@
 		<Delete Files="$(TargetDir)\libpostal-1.dll" Condition="'$(OS)' == 'Windows_NT'"/>
 		<Delete Files="$(TargetDir)\libpostal-1.so" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))'"/>
 	</Target>
+	<Target Name="PrepLibPostalPublish" AfterTargets="Publish">
+		<Message Importance="high" Text="Writing to folder $(PublishDir)"/>
+		<DownloadFile SourceUrl="https://github.com/rkramer1964/PKLibPostalNetData/releases/download/1.0.0/libpostal.zip"
+					  DestinationFolder="$(PublishDir)\App_Data"></DownloadFile>
+		<Unzip SourceFiles="$(PublishDirDir)\App_Data\libpostal.zip" DestinationFolder="$(TargetDir)\App_Data" OverwriteReadOnlyFiles="true"></Unzip>
+		<Delete Files="$(PublishDir)\App_Data\libpostal.zip"></Delete>
+		<Copy SourceFiles="@(WindowsNativeFiles)" DestinationFolder="$(PublishDir)"/>
+		<Copy SourceFiles="@(LinuxNativeFiles)" DestinationFolder="$(PublishDir)"/>
+	</Target>
 </Project>
